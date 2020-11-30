@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Klient(models.Model):
-    idKlient = models.IntegerField(primary_key=True)
+    idKlient = models.AutoField(primary_key=True)
     Imie = models.CharField(max_length=50)
     Nazwisko = models.CharField(max_length=50)
     Wiek = models.IntegerField()
@@ -12,17 +12,17 @@ class Klient(models.Model):
 
 
 class Przystanek(models.Model):
-    idPrzysanek = models.IntegerField(primary_key=True)
+    idPrzysanek = models.AutoField(primary_key=True)
     Nazwa = models.CharField(max_length=100)
 
 class Trasa(models.Model):
-    idTrasa = models.IntegerField(primary_key=True)
+    idTrasa = models.AutoField(primary_key=True)
     czas = models.DateTimeField()
     idPrzystanek = models.ForeignKey(Przystanek, on_delete=models.CASCADE)
 
 
 class Kurs(models.Model):
-    idKurs = models.AutoField()
+    idKurs = models.AutoField(primary_key=True)
     Przewoniznik = models.CharField(max_length=45)
     ilosc_miejsc = models.BigIntegerField()
     Cena = models.FloatField()
@@ -30,7 +30,7 @@ class Kurs(models.Model):
 
 
 class KupioneBilety(models.Model):
-    idBilet = models.IntegerField(primary_key=True)
+    idBilet = models.AutoField(primary_key=True)
     idKlient = models.ForeignKey(Klient, on_delete=models.CASCADE)
     idKurs = models.ForeignKey(Kurs, on_delete=models.CASCADE)
 
